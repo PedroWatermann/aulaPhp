@@ -12,7 +12,7 @@ $login = mysqli_query($mysqli, $sql);
 
 if (mysqli_num_rows($login) > 0) {
     $dados = mysqli_fetch_assoc($login); // Cria um array de $login
-    $_SESSION["user"] = $dados["nome"]; // Cria uma sessão chamada user que recebe do array a posição nome da query, pois * seleciona tudo
+    $_SESSION["user"] = $dados["nome"]; // Cria uma sessão chamada user que recebe do array a posição nome da query, pois * seleciona tudo (ou seja, a sessão é nomeada com o nome do usuário)
 
     echo "
         <script>
