@@ -1,20 +1,20 @@
 <!-- Toda página após o login deverá conter esse trecho de código -->
 <?php
 
-session_start(); // Inicia a sessão
+session_start(); // Inicia a sessão ou recupera a sessão existente
 
-if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe
+if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se está definida e não é null)
     echo "
         <script>
             window.location.replace('index.php');
         </script>
     ";
 
-    exit(); // Sai da sessão que, ocasionalmente, estiver criada
+    exit(); // Interrompe a execução do script imediatamente
+    // exit() é apenas um alias para die()
 }
 
 ?>
-<!-- Toda página após o login deverá conter esse trecho de código -->
 
 <!DOCTYPE html>
 
@@ -26,19 +26,8 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe
     <title>Aula de PHP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <style>
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="img/iconwhite.png" type="image/png" id="favicon">
 </head>
 
 <body>
@@ -63,6 +52,8 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe
             </div>
         </div>
     </div>
+
+    <script src="js/icon.js"></script>
 </body>
 
 </html>
