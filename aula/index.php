@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <script src="js/icon.js"></script>
+    <script src="js/favicon.js"></script>
 </body>
 
 </html>
