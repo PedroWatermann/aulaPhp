@@ -4,6 +4,43 @@ session_start(); // Inicia a sessão desse usuário
 
 include "conecta.php"; // Inclui todo o código do conecta.php
 
+if (isset($_POST["cpf"], $_POST["senha"]) && !empty($_POST["cpf"]) && !empty($_POST["senha"])) {
+    $cpf = trim($_POST["cpf"]);
+    $senha = trim($_POST["senha"]);
+    $sql = "SELECT nome, cpf, senha FROM usuario WHERE cpf = ?";
+    // Prepara o sql para conversar com o banco
+    $stmt = $mysqli->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("s", $cpf);
+        $stmt->execute();
+        $stmt->bind_result($dbnome, $dbcpf, $dbhash);
+
+        // Converte/transforma $stmt em uma matriz associativa
+        if ($stmt->fetch()) {
+            if (password_verify($senha, trim($dbhash))) {
+                $_SESSION["user"] = $dbnome;
+                echo "
+                    <script>
+                    console.log('$dbhash, $dbcpf, $dbnome');
+                    window.location.replace('aula.php');
+                    </script>
+                ";
+            } else {
+                echo "
+                    <script>
+                        alert('Login ou senha incorretos!');
+                        window.location.replace('index.php');
+                    </script>
+                ";
+            }
+        }
+    }
+}
+
+$stmt->close();
+mysqli_close($mysqli);
+
+/* CODIGO ANTERIOR À CRIPTOGRAFIA DA SENHA
 // Recuperação de variáveis do formulário
 $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
@@ -37,6 +74,7 @@ if (mysqli_num_rows($login) > 0) {
 
 // Fecha a conexão com o banco. Essa conexão foi aberta no arquivo conecta.php
 mysqli_close($mysqli);
+*/
 
 
 # Funcionamento de variáveis de sessão #

@@ -94,15 +94,33 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Usuário</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Aqui vai o form
+                    <form action="cadusuario.php" method="post">
+                        <label for="nome" class="form-label">Nome:</label>
+                        <input type="text" name="nome" id="nome" class="form-control" required><br>
+
+                        <label for="genero">Gênero:</label>
+                        <select name="genero" id="genero" class="form-select">
+                            <option value="" disabled selected></option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select><br>
+
+                        <label for="cpf">CPF:</label>
+                        <input type="text" name="cpf" id="cpf" class="form-control" required><br>
+
+                        <label for="senha" class="form-label">Senha:</label>
+                        <input type="password" name="senha" id="senha" class="form-control" required><br>
+
+                        <div class="text-center"><input type="submit" value="Cadastrar" class="btn btn-outline-success"></div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
