@@ -10,7 +10,7 @@ $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
 
 // Criptografia da senha
-$hash = password_hash($senha, PASSWORD_BCRYPT);
+$hash = password_hash($senha, PASSWORD_ARGON2I);
 
 // Utiliza o método query para executar a query e, caso seja bem sucedida, armazena os dados no objeto $query
 $query = $mysqli->query("SELECT * FROM usuario WHERE cpf = '$cpf'");

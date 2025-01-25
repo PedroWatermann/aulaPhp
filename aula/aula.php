@@ -47,7 +47,7 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
                 </div>
                 <div class="card-body">
                     <?php $nome = $_SESSION["user"] ?>
-                    <h4><strong><?= $nome ?></strong>, você está logado(a) na página!</h4>
+                    <h4><strong><?= ucfirst($nome) ?></strong>, você está logado(a) na página!</h4>
                 </div>
             </div>
         </div>
