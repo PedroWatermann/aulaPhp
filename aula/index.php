@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    session_destroy();
+?>
+
 <!-- Script HTML da tela inicial da aplicação -->
 
 <!DOCTYPE html>

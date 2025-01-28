@@ -19,7 +19,7 @@ if (!$stmt) {
 
     echo "
         <script>
-            alert('Usuário editado com suesso!');
+            alert('Usuário editado com sucesso!');
         </script>
     ";
 }
