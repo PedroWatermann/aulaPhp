@@ -23,9 +23,12 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula de PHP</title>
+
+    <title>Home</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="style/nav.css">
     <link rel="shortcut icon" href="img/iconwhite.png" type="image/png" id="favicon">
 </head>
@@ -39,7 +42,7 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
     <br>
     <br>
 
-    <div class="row justify-content-center row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="row justify-content-center row-cols-1 row-cols-md-3 mb-3 text-center w-100">
         <div class="col">
             <div class="card mb-4 rounded-3 shadow-sw">
                 <div class="card-header py-3">

@@ -24,5 +24,9 @@ function detectColorScheme() {
     document.addEventListener("visibilitychange", atualizaFavicon);
 }
 
+function pagina() {
+    
+}
+
 // Executa a função ao carregar a página
 detectColorScheme();
