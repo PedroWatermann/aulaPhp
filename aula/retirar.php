@@ -12,6 +12,16 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
 
 include "conecta.php";
 
+// Verifica se o pedido foi realizado (variável de sessão) e exibe uma mensagem de confirmação
+if (isset($_SESSION['pedido_finalizado']) && $_SESSION['pedido_finalizado'] == true) {
+    echo "
+        <script>
+            alert('Pedido realizado com sucesso!');
+        </script>
+    ";
+    unset($_SESSION['pedido_finalizado']);
+}
+
 // Inicializa a sessão dos pedidos
 if (!isset($_SESSION["pedidos"])) {
     $_SESSION["pedidos"] = [];
@@ -22,38 +32,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["descricao"]) && isset(
     $id_produto = $_POST["descricao"];
     $quantidade = $_POST["quantidade"];
 
+    foreach ($_SESSION['pedidos'] as $pedido) {
+        if ($pedido['id'] == $id_produto) {
+            echo "
+                <script>
+                    alert('Este produto já foi selecionado!');
+                    window.location.replace('retirar.php');
+                </script>
+            ";
+            exit();
+        }
+    }
+
     // Busca a descrição do produto
-    $query = mysqli_query($mysqli, "SELECT descricao FROM produto WHERE id = '$id_produto'");
+    $query = mysqli_query($mysqli, "SELECT descricao, quantidade FROM produto WHERE id = '$id_produto'");
     $produto = mysqli_fetch_assoc($query);
+
+    if ($quantidade > $produto['quantidade']) {
+        echo "
+            <script>
+                alert('Quantidade INDISPONÍVEL no estoque!\\n\\nEstoque atual: " . $produto['quantidade'] . "');
+                window.location.replace('retirar.php');
+            </script>
+        ";
+        exit();
+    }
 
     // Adiciona os dados ao array da sessão
     $_SESSION["pedidos"][] = ["id" => $id_produto, "descricao" => $produto["descricao"], "quantidade" => $quantidade];
+}
 
-    // Finaliza o pedido e grava no banco de dados
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['finalizar_pedido'])) {
-        $colaborador = $_SESSION['user'];
-        $datahora = date('Y-m-d H:i:s');
+// Finaliza o pedido e grava no banco de dados
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['finalizar_pedido'])) {
+    $colaborador = $_SESSION['user'];
+    $datahora = date('Y-m-d H:i:s');
 
-        foreach ($_SESSION['pedidos'] as $pedido) {
-            $id_produto = $pedido['id'];
-            $descricao = $pedido['descricao'];
-            $quantidade = $pedido['quantidade'];
+    foreach ($_SESSION['pedidos'] as $pedido) {
+        $id_produto = $pedido["id"];
+        $descricao = $pedido["descricao"];
+        $quantidade = $pedido["quantidade"];
 
-            // Query que insere no banco
-            $sql = "INSERT INTO pedidos(id_produto, descricao, quantidade, colaborador, data_hora) VALUES ('$id_produto', '$descricao', '$quantidade', '$colaborador', '$datahora')";
-            mysqli_query($mysqli, $sql);
-            header("Location: retirar.php");
-        }
+        // Query que insere no banco
+        $sql = "INSERT INTO pedidos(id_produto, descricao, quantidade, colaborador, data_hora) VALUES ('$id_produto', '$descricao', '$quantidade', '$colaborador', '$datahora')";
+        mysqli_query($mysqli, $sql);
 
-        // Limpa a sessão
-        $_SESSION['pedidos'] = [];
+        // Query para alterar o estoque
+        $sql2 = "UPDATE produto SET quantidade = quantidade - $quantidade WHERE id = '$id_produto'";
+        mysqli_query($mysqli, $sql2);
+
+        $_SESSION['pedido_finalizado'] = true;
+        header("Location: retirar.php");
     }
 
-    // Redireciona para evitar o reenvio do formlário
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    }
+    // Limpa a sessão
+    $_SESSION['pedidos'] = [];
+}
+
+// Redireciona para evitar o reenvio do formlário
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
 }
 ?>
 
@@ -92,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["descricao"]) && isset(
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h3><i class="bi bi-cart"> Pedidos</i></h3>
+                        <h3><i>Pedidos</i></h3>
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
@@ -114,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["descricao"]) && isset(
                             </select>
                             <br>
                             <label for="quantidade" class="form-label"><strong>Quantidade</strong></label>
-                            <input type="number" name="quantidade" id="quantidade" class="form-control" required>
+                            <input type="number" name="quantidade" id="quantidade" class="form-control" min="0" required>
                             <br>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Adicionar produto</button>
@@ -126,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["descricao"]) && isset(
 
                 <div class="card">
                     <div class="card-header text-center">
-                        <h3><i class="bi bi-truck"> Retirada</i></h3>
+                        <h3><i>Retirada</i></h3>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-hover" style="text-align: center;">
