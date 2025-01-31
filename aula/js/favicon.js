@@ -13,7 +13,7 @@ function detectColorScheme() {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 fav.href = "img/iconwhite.png";
                 fav.type = "image/png";
-            } 
+            }
         }
     };
 
@@ -24,9 +24,37 @@ function detectColorScheme() {
     document.addEventListener("visibilitychange", atualizaFavicon);
 }
 
-function pagina() {
-    
+function paginalink() {
+    const url = window.location.href;
+    let linkHome = document.getElementById("home");
+    let linkUsua = document.getElementById("usua");
+    let linkProd = document.getElementById("prod");
+    let linkPedi = document.getElementById("pedi");
+
+
+    if (url.includes("aula.php")) {
+        linkHome.classList.add("ativo");
+        linkUsua.classList.remove("ativo");
+        linkProd.classList.remove("ativo");
+        linkPedi.classList.remove("ativo");
+    } else if (url.includes("usuario.php")) {
+        linkUsua.classList.add("ativo");
+        linkHome.classList.remove("ativo");
+        linkProd.classList.remove("ativo");
+        linkPedi.classList.remove("ativo");
+    } else if (url.includes("produto.php")) {
+        linkProd.classList.add("ativo");
+        linkUsua.classList.remove("ativo");
+        linkHome.classList.remove("ativo");
+        linkPedi.classList.remove("ativo");
+    } else if (url.includes("retirar.php")) {
+        linkPedi.classList.add("ativo");
+        linkUsua.classList.remove("ativo");
+        linkProd.classList.remove("ativo");
+        linkHome.classList.remove("ativo");
+    }
 }
 
 // Executa a função ao carregar a página
+paginalink();
 detectColorScheme();

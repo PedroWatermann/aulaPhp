@@ -36,9 +36,14 @@ if ($tipo == "C") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Produtos</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style/nav.css">
     <link rel="shortcut icon" href="img/iconwhite.png" type="image/png" id="favicon">
@@ -57,9 +62,10 @@ if ($tipo == "C") {
         <div class="col">
             <div class="card mb-4 rounded-3 shadow-sw">
                 <div class="card-header py-3">
-                    <h3>Produtos</h3>
+                    <h3><i class="bi bi-box-seam"> Produtos</i></h3>
                     <br>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar produto</button>
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Cadastrar produto</button>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
@@ -153,7 +159,8 @@ if ($tipo == "C") {
                         <label for="quantidade">Quantidade:</label>
                         <input type="number" name="quantidade" id="quantidade" class="form-control" required><br>
 
-                        <div class="text-center"><input type="submit" value="Cadastrar" class="btn btn-outline-success"></div>
+                        <div class="text-center"><input type="submit" value="Cadastrar" class="btn btn-outline-success">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

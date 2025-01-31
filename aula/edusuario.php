@@ -26,8 +26,13 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
 
     <title>Editar Usuários</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style/nav.css">
     <link rel="shortcut icon" href="img/iconwhite.png" type="image/png" id="favicon">
@@ -66,9 +71,9 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
                     }
                     ?>
 
-                    <form action="editausuario.php?id=<?=$id?>&tipo=<?=$tipo?>" method="post">
+                    <form action="editausuario.php?id=<?= $id ?>&tipo=<?= $tipo ?>" method="post">
                         <label for="nome" class="form-label">Nome:</label>
-                        <input type="text" name="nome" id="nome" class="form-control" value="<?=$nome?>" required><br>
+                        <input type="text" name="nome" id="nome" class="form-control" value="<?= $nome ?>" required><br>
 
                         <label for="genero">Gênero:</label>
                         <select name="genero" id="genero" class="form-select">
@@ -79,9 +84,10 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
                         </select><br>
 
                         <label for="cpf">CPF:</label>
-                        <input type="text" name="cpf" id="cpf" class="form-control" value="<?=$cpf?>" required><br>
+                        <input type="text" name="cpf" id="cpf" class="form-control" value="<?= $cpf ?>" required><br>
 
-                        <div class="text-center"><input type="submit" value="Editar" class="btn btn-outline-success"></div>
+                        <div class="text-center"><input type="submit" value="Editar" class="btn btn-outline-success">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -91,7 +97,7 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
     <script src="js/favicon.js"></script>
 
     <script>
-        let genero = "<?=$genero?>";
+        let genero = "<?= $genero ?>";
         genero = genero.toLowerCase();
         let opGen = document.getElementById("genero");
         opGen.value = genero;

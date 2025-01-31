@@ -26,8 +26,13 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
 
     <title>Home</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style/nav.css">
     <link rel="shortcut icon" href="img/iconwhite.png" type="image/png" id="favicon">
@@ -46,7 +51,7 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
         <div class="col">
             <div class="card mb-4 rounded-3 shadow-sw">
                 <div class="card-header py-3">
-                    <h3>Aula PHP</h3>
+                    <h3><i class="bi bi-house"> Home</i> </h3>
                 </div>
                 <div class="card-body">
                     <?php $nome = $_SESSION["user"] ?>

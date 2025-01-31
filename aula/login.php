@@ -37,7 +37,7 @@ if (isset($_POST["cpf"], $_POST["senha"]) && !empty($_POST["cpf"]) && !empty($_P
                             window.location.replace('index.php');
                         </script>
                     ";
-                    
+
                     exit();
                 }
             } else {
@@ -50,7 +50,7 @@ if (isset($_POST["cpf"], $_POST["senha"]) && !empty($_POST["cpf"]) && !empty($_P
                         window.location.replace('index.php');
                     </script>
                 ";
-                
+
                 exit();
             }
         } else {
@@ -58,14 +58,14 @@ if (isset($_POST["cpf"], $_POST["senha"]) && !empty($_POST["cpf"]) && !empty($_P
 
             $stmt->close();
             $mysqli->close();
-            
+
             echo "
                 <script>
                     alert('Ocorreu um erro interno.'); 
                     window.location.replace('index.php');
                 </script>
             ";
-            
+
             exit();
         }
     } else {

@@ -13,7 +13,7 @@ $mysqli = mysqli_connect($hostname, $username, $password, $database);
 if (!$mysqli) {
     /* Para a execução do programa */
     die("Ocorreu um erro de conexão: " . mysqli_connect_error());
-} 
+}
 /*else {  // Apenas para teste 
     echo "Conectado com sucesso!";
 }*/
