@@ -97,7 +97,7 @@ if ($tipo == "C") {
                                             <td>" . $registro["cpf"] . "</td>
                                             <td class='text-nowrap'>
                                                 <abbr title='Editar' style='text-decoration:none;'>
-                                                    <a href='edproduto.php?id=$id' style='color: black; text-decoration: none;'>
+                                                    <a href='edusuario.php?id=$id' style='color: black; text-decoration: none;'>
                                                         <i class='bi bi-pencil-square' style='color:blue;font-size:20px;'></i>
                                                     </a>
                                                 </abbr>

@@ -69,7 +69,9 @@ if (!isset($_SESSION["user"])) { // Verifica se a sessão usuário existe (se es
                             <h5>Pedidos realizados: <span style='color:red;'>" . $pedidos['qtde'] . "</span></h5>
                         ";
                     } else {
-                        $query = mysqli_query($mysqli,  "SELECT * FROM pedidos WHERE colaborador = '" . $_SESSION['user'] . "'");
+                        $usuar = $_SESSION['user'];
+                        $cpf = $_SESSION['cpf'];
+                        $query = mysqli_query($mysqli,  "SELECT * FROM pedidos AS p WHERE p.cpf = '$cpf' AND p.colaborador = '$usuar'");
                         echo "
                             <h3>Bem vindo, " . ucfirst($_SESSION['user']) . "!</h3>
                             <br>

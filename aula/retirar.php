@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["descricao"]) && isset(
 // Finaliza o pedido e grava no banco de dados
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['finalizar_pedido'])) {
     $colaborador = $_SESSION['user'];
+    $cpf = $_SESSION['cpf'];
     $datahora = date('Y-m-d H:i:s');
 
     foreach ($_SESSION['pedidos'] as $pedido) {
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['finalizar_pedido'])) {
         $quantidade = $pedido["quantidade"];
 
         // Query que insere no banco
-        $sql = "INSERT INTO pedidos(id_produto, descricao, quantidade, colaborador, data_hora) VALUES ('$id_produto', '$descricao', '$quantidade', '$colaborador', '$datahora')";
+        $sql = "INSERT INTO pedidos(id_produto, descricao, quantidade, colaborador, cpf, data_hora) VALUES ('$id_produto', '$descricao', '$quantidade', '$colaborador', '$cpf', '$datahora')";
         mysqli_query($mysqli, $sql);
 
         // Query para alterar o estoque
@@ -102,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Retirada</title>
+    <title>Pedidos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
