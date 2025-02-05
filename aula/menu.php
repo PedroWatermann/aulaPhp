@@ -25,6 +25,7 @@ if ($tipo == "A") {
             <a href='usuario.php' style='color: black; text-decoration: none;' id='usua'><i class='bi bi-people'> Usuários</i></a>
             <a href='produto.php' style='color: black; text-decoration: none;' id='prod'><i class='bi bi-box-seam'> Produtos</i></a>
             <a href='retirar.php' style='color: black; text-decoration: none;' id='pedi'><i class='bi bi-cart'> Pedidos</i></a>
+            <a href='relatorio.php' style='color: black; text-decoration: none;' id='rela'><i class='bi bi-file-earmark-text'> Relatórios</i></a>
             <a href='sair.php' style='color: rgb(193, 18, 31); text-decoration: none;' id='sair'><i class='bi bi-box-arrow-right'> Sair</i></a>
         </div>
     ";
@@ -40,6 +41,7 @@ if ($tipo == "A") {
         <div class='nav-links'>
             <a href='aula.php' style='color: black; text-decoration: none;' id='home'><i class='bi bi-house'> Home</i></a>
             <a href='retirar.php' style='color: black; text-decoration: none;' id='pedi'><i class='bi bi-cart'> Pedidos</i></a>
+            <a href='relatorio.php' style='color: black; text-decoration: none;' id='rela'><i class='bi bi-file-earmark-text'> Relatórios</i></a>
             <a href='sair.php' style='color: rgb(193, 18, 31); text-decoration: none;' id='sair'><i class='bi bi-box-arrow-right'> Sair</i></a>
         </div>
     ";

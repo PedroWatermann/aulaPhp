@@ -30,27 +30,37 @@ function paginalink() {
     let linkUsua = document.getElementById("usua");
     let linkProd = document.getElementById("prod");
     let linkPedi = document.getElementById("pedi");
-
+    let linkRela = document.getElementById("rela");
 
     if (url.includes("aula.php")) {
         linkHome.classList.add("ativo");
         linkUsua.classList.remove("ativo");
         linkProd.classList.remove("ativo");
         linkPedi.classList.remove("ativo");
+        linkRela.classList.remove("ativo");
     } else if (url.includes("usuario.php")) {
         linkUsua.classList.add("ativo");
         linkHome.classList.remove("ativo");
         linkProd.classList.remove("ativo");
         linkPedi.classList.remove("ativo");
+        linkRela.classList.remove("ativo");
     } else if (url.includes("produto.php")) {
         linkProd.classList.add("ativo");
         linkUsua.classList.remove("ativo");
         linkHome.classList.remove("ativo");
         linkPedi.classList.remove("ativo");
+        linkRela.classList.remove("ativo");
     } else if (url.includes("retirar.php")) {
         linkPedi.classList.add("ativo");
         linkUsua.classList.remove("ativo");
         linkProd.classList.remove("ativo");
+        linkHome.classList.remove("ativo");
+        linkRela.classList.remove("ativo");
+    } else if (url.includes("relatorio.php")) {
+        linkRela.classList.add("ativo");
+        linkUsua.classList.remove("ativo");
+        linkProd.classList.remove("ativo");
+        linkPedi.classList.remove("ativo");
         linkHome.classList.remove("ativo");
     }
 }
